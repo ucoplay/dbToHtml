@@ -1,0 +1,57 @@
+.wrap{
+	margin:0 auto;
+	min-width:450px;
+	width:60%;
+	border:1px solid #337AB7  ;
+	text-align:center;
+}
+
+#header{
+	background-color:#337AB7 ;
+	height:30px;
+}
+
+#databaseinfo{
+	margin:0 auto;
+	width:75%;
+	text-align:center;
+}
+#databaseinfo table{
+	width:100%
+}
+td{
+	text-align:right;
+	vertical-align:top;
+}
+.long{
+	width:100%
+}
+.align-left{
+	text-align:left;
+}
+.mini-button{
+	width:100px;
+}
+
+#listTable{
+	border-top:1px solid #337AB7 ;
+	width:100%;
+	margin:0 auto
+}
+#listTable td{
+	text-align:left;
+	width:100%;
+}
+img{
+	width:800px;
+	height:80%;
+}
+li span{
+	color:red;
+	font-size:14px;
+	font-weight:bold;
+}
+
+
+
+
