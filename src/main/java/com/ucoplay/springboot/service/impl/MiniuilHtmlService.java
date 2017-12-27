@@ -10,7 +10,8 @@ import java.util.Map;
 import com.ucoplay.springboot.service.IHtmlService;
 
 public class MiniuilHtmlService implements IHtmlService {
-	String queryHtmlTemp = "\\src\\main\\resources\\public\\htmlTemplate\\miniQuery.jsp";
+	String pathSeparator = System.getProperty("file.separator");
+	String queryHtmlTemp = pathSeparator+"src"+pathSeparator+"main"+pathSeparator+"resources"+pathSeparator+"public"+pathSeparator+"htmlTemplate"+pathSeparator+"miniQuery.jsp";
 	List<Map<String, String>> colInfoList;
 	
 	public void setColInfoList(List<Map<String, String>> colInfoList) {
