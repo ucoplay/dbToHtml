@@ -143,7 +143,8 @@ function setColumnWidgetData(sender,node,isLeaf){
 var widgetList = [
 	{"id":"mini-datepicker","text":"日期控件(date)"},
 	{"id":"mini-textbox","text":"文本框(textbox)"},
-	{"id":"mini-combobox","text":"下拉框(combobox)"}
+	{"id":"mini-combobox","text":"下拉框(combobox)"},
+	{"id":"mini-spinner","text":"数值(spinner)"}
 ];
 
 var defaultComboboxReg = /(编码|状态|名称|民族|性别)/;
@@ -158,6 +159,8 @@ function addDefaultWidgetType(columnList){
 			}
 		}else if(column.data_type=="date"){
 			column.widgetType="mini-datepicker";
+		}else if(column.data_type=="decimal"){
+			column.widgetType="mini-spinner";
 		}
 	}
 }

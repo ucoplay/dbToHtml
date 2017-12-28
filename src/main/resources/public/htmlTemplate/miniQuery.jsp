@@ -70,13 +70,12 @@ html body .searchbox .mini-buttonedit-icon {
 	<div id="p1" style="border: 1px solid #99BCE8; border-top: 0; height: 240px; padding: 5px; background-color: #ECEDEF;">
 		<form id="form1" method="post" style="margin: 0px; padding: 0px; margin-top: 10px;">
 			<table style="width: 100%;table-layout:fixed;" >
-				<!-- ==start== -->			
+				<!--container_tag_start-->			
 				<tr>
-					<td class="inputLable">%s：</td><td><input name="%s" id="%s" class="%s inputWidth" /></td>
-					<td class="inputLable">%s：</td><td><input name="%s" id="%s" class="%s inputWidth" /></td>
-					<td class="inputLable">%s：</td><td><input name="%s" id="%s" class="%s inputWidth" /></td>					
+					<!--content_repeat:{"repeat":4,"columns":["column_comment","column_name","column_name","widgetType"]}-->
+					<td class="inputLable">%s：</td><td><input name="%s" id="%s" class="%s inputWidth" /></td>			
 				</tr>
-				<!-- ==end== -->
+				<!--container_tag_end-->
 				<tr>
 					<td colspan="6" style="text-align: center;padding-top:5px;">
 						<a class="mini-button" iconCls="fa-search colorGreen" onclick="search();" style="margin-right:10px;">查询</a>
@@ -94,23 +93,8 @@ html body .searchbox .mini-buttonedit-icon {
 			sizeList="[20,50,100,300,500,1000,3000]" pageSize="20" allowSortColumn="false" onrowdblclick="editSetFun" showColumnsMenu="true" showEmptyText="true" emptyText="无查询结果！">
 			<div property="columns">
 				<div type="checkcolumn" width="10"></div>
-				<div name="examno" field="examno" width="30" headerAlign="center" allowSort="true">考生号</div>
-				<div name="stuno" field="stuno" width="25" headerAlign="center" allowSort="true">学号</div>
-				<div name="stuname" field="stuname" width="20" headerAlign="center" allowSort="true">姓名</div>
-				<div name="gendar" field="gendar" width="15" headerAlign="center" allowSort="true" align="center">性别</div>
-				<div name="enroyear" field="enroyear" width="15" headerAlign="center" allowSort="true">入学年度</div>
-				<div name="enrollspname" field="enrollspname" width="50" headerAlign="center" allowSort="true">录取专业</div>
-				<div name="clsid" field="clsid" type="comboboxcolumn" width="20" headerAlign="center">
-					班级 <input property="editor" class="mini-combobox" style="width: 100%;" textField="clsid" valueField="clsid" url="stuClasJsonAll.shtml" ajaxType="post" />
-				</div>
-				<div name="idno" field="idno" width="40" headerAlign="center" allowSort="true" visible="false">身份证号</div>
-				<div name="examno" field="examno" width="25" headerAlign="center" allowSort="true" visible="false">考生号</div>
-				<div name="stutel" field="stutel" width="20" headerAlign="center" allowSort="true" visible="false">学生电话</div>
-				<div name="hometel" field="hometel" width="20" headerAlign="center" allowSort="true" visible="false">家庭电话</div>
-				<div name="schoolcensus" field="schoolcensus" type="comboboxcolumn" width="20" headerAlign="center" align="center">
-					学籍状态 <input property="editor" class="mini-combobox" style="width: 100%;" textField="dictName" valueField="dictValue" url="getDictListCombo_1709030829298380000.shtml" />
-				</div>
-				<div name="remarks" field="remarks" headerAlign="center" allowSort="true">备注</div>
+				<!--single_repeat:{"repeat":10,"columns":["column_name","column_name","column_comment"]}-->
+				<div name="%s" field="%s" width="30" headerAlign="center" allowSort="true">%s</div>
 			</div>
 		</div>
 	</div>
