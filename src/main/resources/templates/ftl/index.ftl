@@ -44,7 +44,7 @@
 			</table>
 		</form>
 		<form id="detail" method="post">
-			<table id="listTable" >
+			<table id="listTable" style="display:none">
 					<tr>
 						<td>
 							<b>选择用户表\视图</b>
@@ -85,7 +85,8 @@
 					
 					<tr>
 						<td style="text-align:center;padding-top:20px;">
-							<a class="mini-button mini-button-primary" id="genHtml" onclick="genHtml">生成html文件</a>
+							<a class="mini-button mini-button-primary" id="genQueryHtml" onclick="genQueryHtml">生成查询页面</a>
+							<a class="mini-button mini-button-primary" id="genDetailHtml" onclick="genDetailHtml">生成修改页面</a>
 							<input type="hidden" name="colInfoListString" id="colInfoListString" />
 						</td>
 					</tr>

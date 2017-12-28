@@ -56,4 +56,32 @@ public class IndexController {
 			return new ResponseEntity<String>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
 		} 
 	}
+	
+	@RequestMapping("/downLoadMiniuiEditTemplate")
+	public ResponseEntity<String> downLoadMiniuiEditHtml(@RequestParam String colInfoListString){
+		try {
+			List<Map<String, String>> colInfoList = objectMapper.readValue(colInfoListString,new TypeReference<List<Map<String, String>>>() {
+			});
+			//生成下载的jsp文件
+			MiniuilHtmlService service = new MiniuilHtmlService();
+			service.setColInfoList(colInfoList);
+			List<String> htmlLines = service.genDetailHtml();
+			
+			//头文件，指示为文件下载
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+			headers.add("Content-Disposition", "attachment;filename=editHtml.jsp");
+		
+			
+			StringBuffer stringBuffer = new StringBuffer(1024);
+			for(String s:htmlLines) {
+				stringBuffer.append(s);
+				stringBuffer.append("\n");
+			}
+			return new ResponseEntity<String>(stringBuffer.toString(),headers,HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+		} 
+	}
 }

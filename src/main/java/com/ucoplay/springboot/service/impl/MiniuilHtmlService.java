@@ -14,17 +14,12 @@ import com.ucoplay.springboot.service.IHtmlService;
 public class MiniuilHtmlService implements IHtmlService {
 	String pathSeparator = System.getProperty("file.separator");
 	String queryHtmlTemp = pathSeparator+"src"+pathSeparator+"main"+pathSeparator+"resources"+pathSeparator+"public"+pathSeparator+"htmlTemplate"+pathSeparator+"miniQuery.jsp";
+	String editHtmlTemp = pathSeparator+"src"+pathSeparator+"main"+pathSeparator+"resources"+pathSeparator+"public"+pathSeparator+"htmlTemplate"+pathSeparator+"miniEdit.jsp";
 	List<Map<String, String>> colInfoList;
 	
 	public void setColInfoList(List<Map<String, String>> colInfoList) {
 		this.colInfoList = colInfoList;
 	}
-
-	@Override
-	public List<String> genDetailHtml() throws Exception {
-		return null;
-	}
-	
 	/**
 	 * 查找标记<!--container_tag_start-->到<!--container_tag_end-->之间的内容			
 	 * @return
@@ -117,7 +112,7 @@ public class MiniuilHtmlService implements IHtmlService {
 	@SuppressWarnings("unchecked")
 	void replaceSingleRepeat(List<String> htmlLines) throws Exception {
 		List<String> replaceLines = locateSingleRepeat(htmlLines);
-		if (replaceLines.size()<2) {
+		if (replaceLines==null||replaceLines.size()<2) {
 			return;
 		}
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -156,5 +151,24 @@ public class MiniuilHtmlService implements IHtmlService {
 		replaceSingleRepeat(htmlLines);
 		return htmlLines;
 	}
+	
+	/**
+	 * 生成编辑\修改页面
+	 */
+	@Override
+	public List<String> genDetailHtml() throws Exception {
+		Path path = Paths.get(System.getProperty("user.dir")+editHtmlTemp);
+		List<String> htmlLines = Files.readAllLines(path,Charset.forName("UTF-8"));
+		replaceContainerRepeat(htmlLines);
+		replaceSingleRepeat(htmlLines);
+		return htmlLines;
+	}
+	
+	
+	
+	
+	
+	
+	
 	 
 }

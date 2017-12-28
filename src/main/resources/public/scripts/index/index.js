@@ -109,20 +109,26 @@ function getParentList(dataList){
 	return parentList;
 }
 
+function genQueryHtml(){
+	var url = "/downLoadMiniuiQueryTemplate";
+	download(url);
+}
+function genDetailHtml(){
+	var url = "/downLoadMiniuiEditTemplate";
+	download(url);
+}
 /**
  * 根据选择的表和模板，生成html
  * @returns
  */
-function genHtml(){
+function download(url){
 	var tableList = mini.get("columnWidget");
 	var columns = tableList.getData();
-	if(!columns){
+	if(!columns||columns.length==0){
 		mini.alert("请先选择要生成的表！");
 		return;
 	}
-	//var value = "[{\"table_schema\":\"partysys\",\"table_name\":\"bm_zyxx\",\"column_name\":\"spid\",\"ordinal_position\":\"1\",\"column_default\":\"\",\"is_nullable\":\"NO\",\"data_type\":\"varchar\",\"character_maximum_length\":6,\"column_key\":\"PRI\",\"column_comment\":\"专业id\",\"expanded\":false,\"_level\":1,\"checked\":true,\"widgetType\":\"mini-textbox\",\"_id\":363,\"_uid\":363},{\"table_schema\":\"partysys\",\"table_name\":\"bm_zyxx\",\"column_name\":\"spname\",\"ordinal_position\":\"2\",\"column_default\":null,\"is_nullable\":\"YES\",\"data_type\":\"varchar\",\"character_maximum_length\":100,\"column_key\":\"\",\"column_comment\":\"专业名称\",\"expanded\":false,\"_level\":1,\"checked\":true,\"widgetType\":\"mini-combobox\",\"_id\":364,\"_uid\":364}]";
 	$("#colInfoListString").val(mini.encode(columns));
-	var url = "/downLoadMiniuiQueryTemplate";
 	var form = $("#detail");
 	form.attr("action",url)
 	form.attr("target","_blank");
